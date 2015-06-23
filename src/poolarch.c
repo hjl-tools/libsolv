@@ -22,7 +22,7 @@
 
 static const char *archpolicies[] = {
 #if defined(FEDORA) || defined(MAGEIA)
-  "x86_64",	"x86_64:athlon:i686:i586:i486:i386",
+  "x86_64",	"x86_64:x32:athlon:i686:i586:i486:i386",
 #else
   "x86_64",	"x86_64:i686:i586:i486:i386",
 #endif
@@ -57,6 +57,7 @@ static const char *archpolicies[] = {
   "ia32e",	"ia32e:x86_64:athlon:i686:i586:i486:i386",
   "athlon",	"athlon:i686:i586:i486:i386",
   "amd64",	"amd64:x86_64:athlon:i686:i586:i486:i386",
+  "x32",	"x32:x86_64:athlon:i686:i586:i486:i386",
   "geode",	"geode:i586:i486:i386",
   "ppc64iseries", "ppc64iseries:ppc64:ppc",
   "ppc64pseries", "ppc64pseries:ppc64:ppc",
@@ -159,6 +160,8 @@ pool_arch2color_slow(Pool *pool, Id arch)
     color = ARCHCOLOR_ALL;
   else if (!strcmp(s, "s390x") || strstr(s, "64"))
     color = ARCHCOLOR_64;
+  else if (!strcmp(s, "x32"))
+    color = ARCHCOLOR_X32;
   else
     color = ARCHCOLOR_32;
   pool->id2color[arch] = color;

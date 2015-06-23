@@ -18,8 +18,9 @@ extern void pool_setarch(Pool *, const char *);
 extern void pool_setarchpolicy(Pool *, const char *);
 extern unsigned char pool_arch2color_slow(Pool *pool, Id arch);
 
-#define ARCHCOLOR_32    1
-#define ARCHCOLOR_64    2
+#define ARCHCOLOR_32    (1 << 0)
+#define ARCHCOLOR_X32   (1 << 1)
+#define ARCHCOLOR_64    (1 << 2)
 #define ARCHCOLOR_ALL   255
 
 static inline unsigned char pool_arch2color(Pool *pool, Id arch)
